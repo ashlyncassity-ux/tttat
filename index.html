@@ -57,7 +57,7 @@ a{color:inherit}
 .welcome{max-width:34rem;font-size:1.28rem;color:rgba(239,231,222,.88);opacity:0;animation:rise 1.2s .9s forwards}
 .welcome strong{font-weight:500;color:var(--cream)}
 
-.picker{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;width:min(720px,100%);margin-top:2.6rem;opacity:0;animation:rise 1.2s 1.15s forwards}
+.picker{display:grid;grid-template-columns:repeat(6,1fr);gap:.6rem;width:min(820px,100%);margin-top:2.6rem;opacity:0;animation:rise 1.2s 1.15s forwards}
 .pick{display:flex;flex-direction:column;align-items:center;gap:.55rem;padding:1rem .3rem .85rem;text-decoration:none;border:1px solid rgba(201,164,106,.28);border-radius:3px;background:rgba(239,231,222,.03);transition:.35s}
 .pick:hover,.pick:focus-visible{transform:translateY(-4px);border-color:var(--gold);background:rgba(201,164,106,.09);outline:none}
 .pick svg{width:30px;height:30px}
@@ -146,6 +146,7 @@ footer p{max-width:30rem;margin:1rem auto 1.8rem;color:rgba(239,231,222,.75)}
   <a href="#star">Star</a>
   <a href="#world">World</a>
   <a href="#lovers">Lovers</a>
+  <a href="#wheel">Wheel</a>
 </nav>
 
 <!-- reusable glyphs -->
@@ -167,6 +168,10 @@ footer p{max-width:30rem;margin:1rem auto 1.8rem;color:rgba(239,231,222,.75)}
       <ellipse cx="32" cy="32" rx="19" ry="25"/>
       <ellipse cx="32" cy="32" rx="6" ry="9" opacity=".7"/>
       <path d="M32 3v4M32 57v4M13 8l3 3M51 8l-3 3M13 56l3-3M51 56l-3-3" opacity=".5"/>
+    </symbol>
+    <symbol id="g-wheel" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="5"/>
+      <path d="M32 8v19M32 37v19M8 32h19M37 32h19M15 15l13 13M36 36l13 13M49 15L36 28M28 36L15 49"/>
     </symbol>
     <symbol id="g-lovers" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6">
       <circle cx="24" cy="32" r="14"/>
@@ -194,6 +199,7 @@ footer p{max-width:30rem;margin:1rem auto 1.8rem;color:rgba(239,231,222,.75)}
     <a class="pick" href="#star"><svg><use href="#g-star" style="color:var(--gold)"/></svg><span>The Star</span><small>XVII</small></a>
     <a class="pick" href="#world"><svg><use href="#g-world" style="color:var(--gold)"/></svg><span>The World</span><small>XXI</small></a>
     <a class="pick" href="#lovers"><svg><use href="#g-lovers" style="color:var(--gold)"/></svg><span>The Lovers</span><small>VI</small></a>
+    <a class="pick" href="#wheel"><svg><use href="#g-wheel" style="color:var(--gold)"/></svg><span>Wheel of Fortune</span><small>X</small></a>
   </nav>
 
   <p class="hint">Tap your card, or scroll</p>
@@ -286,6 +292,25 @@ footer p{max-width:30rem;margin:1rem auto 1.8rem;color:rgba(239,231,222,.75)}
 
     <div class="label rv d3">In Prythian</div>
     <p class="tie rv d3">Prythian is famous for its mates, those rare bonds that feel like fate. You'll find the card in Feyre and Rhysand, in the fierce, slow-burn sparks between Nesta and Cassian, and in Elain and Lucien's story. The choices are just as important as the destiny: every one of these loves is about who each character chooses to become. If the Lovers is yours, expect big feelings, loyal friendships, and a heart that loves out loud.</p>
+
+    <a class="next rv d4" href="#wheel">Next card ↓</a>
+  </div>
+</section>
+
+
+<!-- WHEEL OF FORTUNE -->
+<section class="card dark" id="wheel" data-nav="wheel">
+  <svg class="ghost" style="color:var(--gold)"><use href="#g-wheel"/></svg>
+  <div class="inner">
+    <div class="kc-wrap rv"><img class="kc" src="assets/keychain-wheel.webp" alt="Wheel of Fortune tarot keychain" width="520" height="700" loading="lazy" tabindex="0"></div>
+    <div class="numeral-sm rv d1">X</div>
+    <h2 class="rv d1">Wheel of Fortune</h2>
+    <p class="keywords rv d2">Fate · Cycles · Turning Points</p>
+
+    <p class="rv d2">The Wheel of Fortune is the card of change. Life moves in cycles, and what's up today may be down tomorrow, and the other way around. It reminds us that luck, timing, and destiny all play a part in our stories, and that no season lasts forever. When this card appears, a turning point is near, so stay flexible, trust the bigger picture, and be ready to move with the wheel instead of against it.</p>
+
+    <div class="label rv d3">In Prythian</div>
+    <p class="tie rv d3">Fate is everywhere in Prythian: in the Cauldron, in bargains and curses, and in the seasons that turn through every court, from Calanmai to Starfall to the Winter Solstice. Feyre is the ultimate Wheel of Fortune story, because her life flips from a starving hunter in the human lands to a High Lady with the fate of a world on her shoulders. If the Wheel is yours, you're a person who adapts, and you know a plot twist can turn out to be the best thing that ever happened to you.</p>
 
     <p class="spoiler rv d4">Spoiler-light, we promise</p>
   </div>
