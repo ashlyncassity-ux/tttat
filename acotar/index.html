@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Tarot Keychain | ACOTAR | Tiny Tatts and Tarot</title>
+<meta name="description" content="Find the meaning behind the tarot keychain in your goodie bag, with a little ACOTAR magic woven in. From Tiny Tatts and Tarot.">
+<meta name="theme-color" content="#141112">
+<meta property="og:title" content="Which card did you get? | Tiny Tatts and Tarot">
+<meta property="og:description" content="The meaning behind your tarot keychain, with a little ACOTAR magic.">
+<link rel="icon" href="/assets/TTAT_logo_white.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --charcoal:#141112;
+  --burgundy:#3d1220;
+  --plum:#5a3d4a;
+  --terracotta:#b4532f;
+  --gold:#c9a46a;
+  --cream:#efe7de;
+  --ink:#241c1e;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --script:'Allura',cursive;
+  --sans:'Jost',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--serif);background:var(--charcoal);color:var(--cream);font-size:1.2rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--terracotta),var(--gold));z-index:100}
+
+/* sticky nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:center;gap:.25rem;padding:.6rem .75rem;background:rgba(20,17,18,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,164,106,.18);transform:translateY(-100%);transition:transform .45s ease}
+.nav.show{transform:none}
+.nav a{font-family:var(--sans);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:rgba(239,231,222,.6);padding:.55rem .6rem;border-radius:999px;transition:.3s;white-space:nowrap}
+.nav a:hover{color:var(--cream)}
+.nav a.active{color:var(--charcoal);background:var(--gold)}
+@media(max-width:520px){.nav{justify-content:flex-start;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4.5rem 1.5rem 3rem;background:radial-gradient(ellipse at 50% 15%,rgba(61,18,32,.9),transparent 60%),radial-gradient(ellipse at 80% 90%,rgba(90,61,74,.35),transparent 55%),var(--charcoal);overflow:hidden}
+.stars{position:absolute;inset:0;pointer-events:none}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:.7;animation:twinkle var(--d,4s) ease-in-out infinite;animation-delay:var(--l,0s)}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:.95;transform:scale(1.5)}}
+.hero > *{position:relative;z-index:1}
+.logo{width:min(190px,48vw);margin-bottom:2.2rem;opacity:0;animation:rise 1.2s .2s forwards}
+.eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-weight:300;font-size:clamp(2.6rem,9vw,5.2rem);line-height:1.05;letter-spacing:.06em;text-transform:uppercase;margin:.9rem 0 .2rem;opacity:0;animation:rise 1.2s .45s forwards}
+.hero h1 em{display:block;font-family:var(--script);font-style:normal;text-transform:none;letter-spacing:0;font-size:1.05em;color:var(--gold);margin-top:.1em}
+.divider{display:flex;align-items:center;gap:.8rem;margin:1.6rem auto;width:min(260px,70%);color:var(--gold);opacity:0;animation:rise 1.2s .7s forwards}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.divider::after{transform:scaleX(-1)}
+.welcome{max-width:34rem;font-size:1.28rem;color:rgba(239,231,222,.88);opacity:0;animation:rise 1.2s .9s forwards}
+.welcome strong{font-weight:500;color:var(--cream)}
+
+.picker{display:grid;grid-template-columns:repeat(6,1fr);gap:.6rem;width:min(820px,100%);margin-top:2.6rem;opacity:0;animation:rise 1.2s 1.15s forwards}
+.pick{display:flex;flex-direction:column;align-items:center;gap:.55rem;padding:1rem .3rem .85rem;text-decoration:none;border:1px solid rgba(201,164,106,.28);border-radius:3px;background:rgba(239,231,222,.03);transition:.35s}
+.pick:hover,.pick:focus-visible{transform:translateY(-4px);border-color:var(--gold);background:rgba(201,164,106,.09);outline:none}
+.pick svg{width:30px;height:30px}
+.pick span{font-family:var(--sans);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;line-height:1.4;color:rgba(239,231,222,.85)}
+.pick small{font-family:var(--serif);font-size:.8rem;font-style:italic;color:var(--gold);line-height:1}
+@media(max-width:560px){
+  .picker{display:flex;flex-wrap:wrap;justify-content:center}
+  .pick{width:calc((100% - 1.4rem)/3)}
+}
+.hint{margin-top:1.6rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(239,231,222,.45);opacity:0;animation:rise 1.2s 1.4s forwards}
+.hint::after{content:"";display:block;width:1px;height:34px;margin:.8rem auto 0;background:linear-gradient(var(--gold),transparent);animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* card sections */
+.card{position:relative;min-height:100svh;display:flex;align-items:center;padding:6rem 1.5rem;overflow:hidden}
+.card.dark{background:var(--charcoal);color:var(--cream)}
+.card.burgundy{background:linear-gradient(160deg,#4a1627,var(--burgundy) 55%,#2a0c16);color:var(--cream)}
+.card.cream{background:var(--cream);color:var(--ink)}
+.card.plum{background:linear-gradient(160deg,#6b4a58,var(--plum) 50%,#43293a);color:var(--cream)}
+.inner{position:relative;z-index:1;width:min(640px,100%);margin:0 auto;text-align:center}
+.numeral{font-family:var(--serif);font-weight:300;font-size:clamp(5rem,22vw,9rem);line-height:1;color:transparent;-webkit-text-stroke:1px var(--gold);opacity:.55;letter-spacing:.04em}
+.cream .numeral{-webkit-text-stroke-color:var(--terracotta)}
+.glyph{width:70px;height:70px;margin:-.3rem auto 1rem;display:block;transition:transform 1.4s ease}
+.card h2{font-weight:300;font-size:clamp(2rem,7vw,3.2rem);letter-spacing:.2em;text-transform:uppercase;line-height:1.15;padding-left:.2em}
+.keywords{margin:.8rem 0 1.8rem;font-family:var(--sans);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.cream .keywords{color:var(--terracotta)}
+.inner p{margin-bottom:1.15rem;text-align:left;hyphens:auto}
+.inner .label{font-family:var(--script);font-size:2.1rem;line-height:1;color:var(--gold);margin:2rem 0 .5rem;text-align:center}
+.cream .label{color:var(--terracotta)}
+.inner p.tie{padding:1.2rem 1.3rem;border-left:2px solid var(--gold);background:rgba(239,231,222,.05);border-radius:0 3px 3px 0}
+.cream .inner p.tie{background:rgba(180,83,47,.07);border-color:var(--terracotta)}
+.spoiler{font-family:var(--sans);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;opacity:.5;text-align:center;margin-top:1.2rem}
+.next{display:inline-block;margin-top:2rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;color:var(--gold);padding:.8rem 1.4rem;border:1px solid currentColor;border-radius:999px;transition:.3s}
+.cream .next{color:var(--terracotta)}
+.next:hover{background:var(--gold);color:var(--charcoal)}
+.cream .next:hover{background:var(--terracotta);color:var(--cream)}
+
+/* decorative ghost glyph behind each section */
+.ghost{position:absolute;right:-12%;top:50%;width:min(560px,90vw);aspect-ratio:1;transform:translateY(-50%);opacity:.06;pointer-events:none;will-change:transform}
+.cream .ghost{opacity:.09}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
+.in .glyph{transform:rotate(360deg)}
+
+/* footer */
+footer{text-align:center;padding:5rem 1.5rem 3.5rem;background:var(--charcoal);border-top:1px solid rgba(201,164,106,.18)}
+footer img{width:110px;margin-bottom:1.6rem;opacity:.9}
+footer .script{font-family:var(--script);font-size:2.6rem;color:var(--gold);line-height:1.1}
+footer p{max-width:30rem;margin:1rem auto 1.8rem;color:rgba(239,231,222,.75)}
+.btn{display:inline-block;font-family:var(--sans);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;padding:1rem 1.8rem;background:var(--gold);color:var(--charcoal);border-radius:999px;transition:.3s}
+.btn:hover{background:var(--cream);transform:translateY(-2px)}
+.fine{margin-top:3rem;font-family:var(--sans);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(239,231,222,.4)}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+  .rv,.logo,.hero h1,.divider,.welcome,.picker,.hint{opacity:1!important;transform:none!important}
+}
+
+/* keychain photos */
+.kc-wrap{display:flex;justify-content:center;margin-bottom:.4rem}
+.kc{width:min(270px,66vw);height:auto;cursor:pointer;transform-origin:50% 8%;filter:drop-shadow(0 18px 24px rgba(0,0,0,.45));-webkit-tap-highlight-color:transparent;outline:none}
+.cream .kc{filter:drop-shadow(0 16px 18px rgba(36,28,30,.35))}
+.kc:hover,.kc.wig{animation:wiggle .9s ease-in-out}
+@keyframes wiggle{0%,100%{transform:rotate(0)}12%{transform:rotate(-9deg)}28%{transform:rotate(7deg)}44%{transform:rotate(-5deg)}60%{transform:rotate(3.5deg)}76%{transform:rotate(-2deg)}90%{transform:rotate(1deg)}}
+.numeral-sm{font-family:var(--serif);font-weight:300;font-size:1rem;letter-spacing:.5em;padding-left:.5em;color:var(--gold);opacity:.8;margin-bottom:.3rem}
+.cream .numeral-sm{color:var(--terracotta)}
+.kc-tip{font-family:var(--sans);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;opacity:.4;margin-bottom:1rem}
+.socials{margin-top:1.8rem}
+.socials a{font-family:var(--sans);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:var(--gold);border-bottom:1px solid rgba(201,164,106,.4);padding-bottom:.2rem;transition:.3s}
+.socials a:hover{color:var(--cream);border-color:var(--cream)}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- sticky nav (appears after the hero) -->
+<nav class="nav" id="nav" aria-label="Jump to your card">
+  <a href="#moon">Moon</a>
+  <a href="#sun">Sun</a>
+  <a href="#star">Star</a>
+  <a href="#world">World</a>
+  <a href="#lovers">Lovers</a>
+  <a href="#wheel">Wheel</a>
+</nav>
+
+<!-- reusable glyphs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-moon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M42 8a24 24 0 1 0 14 40A20 20 0 0 1 42 8Z"/>
+      <path d="M12 56 L52 56" opacity=".4"/>
+    </symbol>
+    <symbol id="g-sun" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="32" cy="32" r="10"/>
+      <path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.6 13.6l5.7 5.7M44.7 44.7l5.7 5.7M13.6 50.4l5.7-5.7M44.7 19.3l5.7-5.7"/>
+    </symbol>
+    <symbol id="g-star" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 4 L36 28 L60 32 L36 36 L32 60 L28 36 L4 32 L28 28 Z"/>
+      <path d="M16 16l5 5M48 16l-5 5M16 48l5-5M48 48l-5-5" opacity=".5"/>
+    </symbol>
+    <symbol id="g-world" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <ellipse cx="32" cy="32" rx="19" ry="25"/>
+      <ellipse cx="32" cy="32" rx="6" ry="9" opacity=".7"/>
+      <path d="M32 3v4M32 57v4M13 8l3 3M51 8l-3 3M13 56l3-3M51 56l-3-3" opacity=".5"/>
+    </symbol>
+    <symbol id="g-wheel" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="5"/>
+      <path d="M32 8v19M32 37v19M8 32h19M37 32h19M15 15l13 13M36 36l13 13M49 15L36 28M28 36L15 49"/>
+    </symbol>
+    <symbol id="g-lovers" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="24" cy="32" r="14"/>
+      <circle cx="40" cy="32" r="14"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- HERO / WELCOME -->
+<header class="hero" id="top">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+
+  <img class="logo" src="/assets/TTAT_logo_white.svg" alt="Tiny Tatts and Tarot">
+  <p class="eyebrow">Your goodie bag has a secret</p>
+  <h1>Which card <em>did you get?</em></h1>
+  <div class="divider" aria-hidden="true">✦</div>
+
+  <p class="welcome">
+    Welcome, wanderer, and thank you for celebrating with us. Tucked inside your goodie bag is a tiny tarot keychain, and it wasn't picked at random. Every card carries a story that has been told for centuries, and today yours gets a little Prythian twist. Find your card below to discover what it means, and which corner of the faerie lands it belongs to. <strong>A little magic goes a long way.</strong>
+  </p>
+
+  <nav class="picker" aria-label="Choose your card">
+    <a class="pick" href="#moon"><svg><use href="#g-moon" style="color:var(--gold)"/></svg><span>The Moon</span><small>XVIII</small></a>
+    <a class="pick" href="#sun"><svg><use href="#g-sun" style="color:var(--gold)"/></svg><span>The Sun</span><small>XIX</small></a>
+    <a class="pick" href="#star"><svg><use href="#g-star" style="color:var(--gold)"/></svg><span>The Star</span><small>XVII</small></a>
+    <a class="pick" href="#world"><svg><use href="#g-world" style="color:var(--gold)"/></svg><span>The World</span><small>XXI</small></a>
+    <a class="pick" href="#lovers"><svg><use href="#g-lovers" style="color:var(--gold)"/></svg><span>The Lovers</span><small>VI</small></a>
+    <a class="pick" href="#wheel"><svg><use href="#g-wheel" style="color:var(--gold)"/></svg><span>Wheel of Fortune</span><small>X</small></a>
+  </nav>
+
+  <p class="hint">Tap your card, or scroll</p>
+</header>
+
+<main>
+
+<!-- THE MOON -->
+<section class="card dark" id="moon" data-nav="moon">
+  <svg class="ghost" style="color:var(--gold)"><use href="#g-moon"/></svg>
+  <div class="inner">
+    <div class="kc-wrap rv"><img class="kc" src="/assets/keychain-moon.webp" alt="The Moon tarot keychain" width="520" height="700" loading="lazy" tabindex="0"></div>
+    <div class="numeral-sm rv d1">XVIII</div>
+    <h2 class="rv d1">The Moon</h2>
+    <p class="keywords rv d2">Intuition · Illusion · Dreams</p>
+
+    <p class="rv d2">The Moon is the card of the in-between: twilight, dreams, and things that aren't quite what they seem. It invites you to trust your gut, even when the path ahead is hard to see. Under its soft light, fears and secrets surface, and the message is gentle but clear. Slow down, listen inward, and don't mistake shadows for the whole truth.</p>
+
+    <div class="label rv d3">In Prythian</div>
+    <p class="tie rv d3">Few cards fit the Night Court better. Think of Rhysand's court of dreams, the hidden glamour of Velaris, and the way nothing in Prythian is ever as simple as it looks. Fae glamour, mind-walking, and the riddles and trials Feyre faces all play with illusion and instinct. If you drew the Moon, you may be a little bit of a night owl, and your intuition is probably sharper than you give it credit for.</p>
+
+    <a class="next rv d4" href="#sun">Next card ↓</a>
+  </div>
+</section>
+
+<!-- THE SUN -->
+<section class="card cream" id="sun" data-nav="sun">
+  <svg class="ghost" style="color:var(--terracotta)"><use href="#g-sun"/></svg>
+  <div class="inner">
+    <div class="kc-wrap rv"><img class="kc" src="/assets/keychain-sun.webp" alt="The Sun tarot keychain" width="520" height="700" loading="lazy" tabindex="0"></div>
+    <div class="numeral-sm rv d1">XIX</div>
+    <h2 class="rv d1">The Sun</h2>
+    <p class="keywords rv d2">Joy · Vitality · Clarity</p>
+
+    <p class="rv d2">The Sun is one of the happiest cards in the deck. It stands for warmth, success, and the feeling of stepping out of a long winter into bright, honest daylight. Where the Moon asks questions, the Sun gives answers. It celebrates confidence, playfulness, and the simple joy of being fully seen as you are.</p>
+
+    <div class="label rv d3">In Prythian</div>
+    <p class="tie rv d3">Head for the Day Court, ruled by Helion, where knowledge and light go hand in hand, or to the sun-soaked shores of the Summer Court. It's also the exact feeling of Feyre finally stepping back into daylight after her darkest days Under the Mountain. If the Sun is yours, you bring the glow to every gathering, and you're probably the friend who makes everyone feel welcome.</p>
+
+    <a class="next rv d4" href="#star">Next card ↓</a>
+  </div>
+</section>
+
+<!-- THE STAR -->
+<section class="card burgundy" id="star" data-nav="star">
+  <svg class="ghost" style="color:var(--gold)"><use href="#g-star"/></svg>
+  <div class="inner">
+    <div class="kc-wrap rv"><img class="kc" src="/assets/keychain-star.webp" alt="The Star tarot keychain" width="520" height="700" loading="lazy" tabindex="0"></div>
+    <div class="numeral-sm rv d1">XVII</div>
+    <h2 class="rv d1">The Star</h2>
+    <p class="keywords rv d2">Hope · Healing · Renewal</p>
+
+    <p class="rv d2">The Star appears after the storm. It's the quiet exhale, the sense that things are going to be okay, and the card most tied to hope, healing, and inspiration. It asks you to have faith in yourself and the future, and to let yourself be restored. Small lights are still lights, and they're enough to find your way by.</p>
+
+    <div class="label rv d3">In Prythian</div>
+    <p class="tie rv d3">Velaris, the City of Starlight, practically lives in this card, along with the Night Court's Starfall celebration, when wishes are made under a sky full of falling stars. It also echoes the slow, tender healing Feyre finds there, and the way a found family can turn the dark into something beautiful. If the Star is yours, you're a hope-bringer, so go make a wish.</p>
+
+    <a class="next rv d4" href="#world">Next card ↓</a>
+  </div>
+</section>
+
+<!-- THE WORLD -->
+<section class="card cream" id="world" data-nav="world">
+  <svg class="ghost" style="color:var(--terracotta)"><use href="#g-world"/></svg>
+  <div class="inner">
+    <div class="kc-wrap rv"><img class="kc" src="/assets/keychain-world.webp" alt="The World tarot keychain" width="520" height="700" loading="lazy" tabindex="0"></div>
+    <div class="numeral-sm rv d1">XXI</div>
+    <h2 class="rv d1">The World</h2>
+    <p class="keywords rv d2">Completion · Wholeness · Fulfillment</p>
+
+    <p class="rv d2">The World is the final card of the Major Arcana, and it marks a journey completed. It speaks of wholeness, achievement, and the deep satisfaction of seeing how all the pieces fit together. It's also a doorway, because every ending quietly opens the next adventure. You've come a long way, so take a moment to celebrate.</p>
+
+    <div class="label rv d3">In Prythian</div>
+    <p class="tie rv d3">This one is all of Prythian at once: the seven courts, the Wall, and the way entire realms had to stand together when it mattered most. It's Feyre's whole arc, from a hunter in the human lands to a High Lady with a world to protect. If the World is yours, you're the one who connects people, and your story is bigger and more beautiful than you realize.</p>
+
+    <a class="next rv d4" href="#lovers">Next card ↓</a>
+  </div>
+</section>
+
+<!-- THE LOVERS -->
+<section class="card plum" id="lovers" data-nav="lovers">
+  <svg class="ghost" style="color:var(--gold)"><use href="#g-lovers"/></svg>
+  <div class="inner">
+    <div class="kc-wrap rv"><img class="kc" src="/assets/keychain-lovers.webp" alt="The Lovers tarot keychain" width="520" height="700" loading="lazy" tabindex="0"></div>
+    <div class="numeral-sm rv d1">VI</div>
+    <h2 class="rv d1">The Lovers</h2>
+    <p class="keywords rv d2">Love · Union · Choice</p>
+
+    <p class="rv d2">The Lovers is about connection, and not only the romantic kind. It stands for deep partnership, shared values, and the moment you choose what truly matters to you. It asks you to be honest with your heart and to choose with intention. At its core, this card is about alignment, and about love that lets you be more yourself.</p>
+
+    <div class="label rv d3">In Prythian</div>
+    <p class="tie rv d3">Prythian is famous for its mates, those rare bonds that feel like fate. You'll find the card in Feyre and Rhysand, in the fierce, slow-burn sparks between Nesta and Cassian, and in Elain and Lucien's story. The choices are just as important as the destiny: every one of these loves is about who each character chooses to become. If the Lovers is yours, expect big feelings, loyal friendships, and a heart that loves out loud.</p>
+
+    <a class="next rv d4" href="#wheel">Next card ↓</a>
+  </div>
+</section>
+
+
+<!-- WHEEL OF FORTUNE -->
+<section class="card dark" id="wheel" data-nav="wheel">
+  <svg class="ghost" style="color:var(--gold)"><use href="#g-wheel"/></svg>
+  <div class="inner">
+    <div class="kc-wrap rv"><img class="kc" src="/assets/keychain-wheel.webp" alt="Wheel of Fortune tarot keychain" width="520" height="700" loading="lazy" tabindex="0"></div>
+    <div class="numeral-sm rv d1">X</div>
+    <h2 class="rv d1">Wheel of Fortune</h2>
+    <p class="keywords rv d2">Fate · Cycles · Turning Points</p>
+
+    <p class="rv d2">The Wheel of Fortune is the card of change. Life moves in cycles, and what's up today may be down tomorrow, and the other way around. It reminds us that luck, timing, and destiny all play a part in our stories, and that no season lasts forever. When this card appears, a turning point is near, so stay flexible, trust the bigger picture, and be ready to move with the wheel instead of against it.</p>
+
+    <div class="label rv d3">In Prythian</div>
+    <p class="tie rv d3">Fate is everywhere in Prythian: in the Cauldron, in bargains and curses, and in the seasons that turn through every court, from Calanmai to Starfall to the Winter Solstice. Feyre is the ultimate Wheel of Fortune story, because her life flips from a starving hunter in the human lands to a High Lady with the fate of a world on her shoulders. If the Wheel is yours, you're a person who adapts, and you know a plot twist can turn out to be the best thing that ever happened to you.</p>
+
+    <p class="spoiler rv d4">Spoiler-light, we promise</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <img src="/assets/TTAT_logo_white.svg" alt="Tiny Tatts and Tarot">
+  <div class="script">Magic looks good on you</div>
+  <p>Tarot readings for birthdays, weddings, Halloween parties, and private events. Five minute readings, and a lifetime of conversation.</p>
+  <a class="btn" href="https://tally.so/r/zxaBLZ" target="_blank" rel="noopener">Bring tarot to your event</a>
+  <div class="socials"><a href="https://www.instagram.com/tinytattsandtarot" target="_blank" rel="noopener">Follow @tinytattsandtarot</a></div>
+  <div class="fine">Event entertainment · Meaningful connections · A more magical celebration</div>
+</footer>
+
+<script>
+(function(){
+  // twinkling stars
+  var s=document.getElementById('stars');
+  for(var i=0;i<46;i++){
+    var e=document.createElement('i');
+    e.style.left=Math.random()*100+'%';
+    e.style.top=Math.random()*100+'%';
+    e.style.setProperty('--d',(3+Math.random()*4).toFixed(1)+'s');
+    e.style.setProperty('--l',(Math.random()*4).toFixed(1)+'s');
+    if(Math.random()>.8){e.style.width=e.style.height='3px'}
+    s.appendChild(e);
+  }
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}});
+  },{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  // spin glyph when its wrapper reveals
+  document.querySelectorAll('.glyph').forEach(function(g){
+    new IntersectionObserver(function(en,o){en.forEach(function(x){if(x.isIntersecting){g.classList.add('in');g.parentNode.classList.add('in');o.disconnect()}})},{threshold:.4}).observe(g);
+  });
+
+  // wiggle keychains on tap/click/keyboard (hover handled in CSS)
+  document.querySelectorAll('.kc').forEach(function(k){
+    function go(){k.classList.remove('wig');void k.offsetWidth;k.classList.add('wig')}
+    k.addEventListener('click',go);
+    k.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+    k.addEventListener('animationend',function(){k.classList.remove('wig')});
+  });
+
+  // nav show/hide, progress, active link, ghost parallax
+  var nav=document.getElementById('nav'),bar=document.getElementById('progress');
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  var secs=[].slice.call(document.querySelectorAll('.card'));
+  var ghosts=[].slice.call(document.querySelectorAll('.ghost'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ticking=false;
+  function update(){
+    var y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(h>0?y/h*100:0)+'%';
+    nav.classList.toggle('show',y>innerHeight*.6);
+    var cur=null;
+    secs.forEach(function(sec){var r=sec.getBoundingClientRect();if(r.top<innerHeight*.45&&r.bottom>innerHeight*.45)cur=sec.dataset.nav});
+    links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+    if(!reduce)ghosts.forEach(function(g){
+      var r=g.parentNode.getBoundingClientRect();
+      var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+      g.style.transform='translateY(calc(-50% + '+(p*-60)+'px)) rotate('+(p*14)+'deg)';
+    });
+    ticking=false;
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+  addEventListener('resize',update);
+  update();
+})();
+</script>
+</body>
+</html>
